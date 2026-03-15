@@ -1,0 +1,131 @@
+#1 Downloading/pulling of public images from docker hub - Eg. nginx, node, python, mysql
+docker pull <image-name>:<image-tag>
+# nginx images - it is a webserver which is used to host static web apps - frontend apps, or reverse proxy.
+docker pull nginx:latest
+
+#2 List the downloaded images
+docker images
+
+#3 Running the nginx image
+docker run <image-name>:<image-tag>
+docker run nginx:latest
+
+#4 List the containers
+docker ps -a
+
+# Container - Port Forwarding
+-p <host-port>:<container-port>
+
+docker run -p 80:80 nginx:latest
+
+# Cotainer - dettached mode
+-d => Flag is added
+
+docker run -d -p 80:80 nginx:latest
+
+# Container - Naming
+--name <container-name>
+
+docker run -d -p 8080:80 --name my-nginx nginx:latest
+
+# Container - LifeCycle Management
+# Stop the running container
+docker stop <container-id> or <container-name>
+
+# Start the stopped container
+docker start <container-id> or <container-name>
+
+# Restart the container
+docker restart <container-id> or <container-name>
+
+# Remove the stopped container
+docker rm <container-id> or <container-name>
+
+# Remove all the stopped containers
+docker container prune
+
+# Remove all the containers - running containers as well
+docker rm -f <container-id> or <container-name>
+
+# Docker Image - LifeCycle
+# Downloading/pulling the image
+docker pull <image-name>:<inage-tag>
+
+# List the images
+docker images
+
+# Remove the image
+docker rmi <image-id> or <image-name>:<image-tag>
+
+# Remove all the images
+docker rmi -f <image-id> or <image-name>:<image-tag>
+
+# Remove all the images - running containers as well
+docker rmi -f <image-id> or <image-name>:<image-tag>
+
+# Remove all the images - remove all the stopped containers as well
+docker system prune -a
+
+# Inspecting Container information
+docker inspect <container-id> or <container-name>
+
+# Docker Networking - Commmands and Information
+# List the networks
+docker network ls
+
+# Create a network
+docker network create <network-name>
+
+# Connect a container to a network
+docker network connect <network-name> <container-id> or <container-name>
+
+# Disconnect a container from a network
+docker network disconnect <network-name> <container-id> or <container-name>
+
+# Remove a network
+docker network rm <network-name>
+
+# Inspect a network
+docker network inspect <network-name>
+
+# Docker Volumes - Commmands and Information
+# Volume could be folder based or docker volume based
+
+# Create a volume
+docker volume create <volume-name>
+
+# Attaching a volume to container
+docker run -p 8080:80 -v <volume-name>:<container-path> <image-name>:<image-tag>
+
+# Connecting to container terminal
+docker exec -it <container-id> bash
+docker exec -it <container-id> sh
+
+# List the volumes
+docker volume ls
+
+# Remove a volume
+docker volume rm <volume-name>
+
+# Inspect a volume
+docker volume inspect <volume-name>
+
+# Docker tags & push to registry - Commmands and Information
+# Tag the image
+docker tag <image-name>:<image-tag> <registry-url>/<image-name>:<image-tag>
+
+# Push the image
+docker push <registry-url>/<image-name>:<image-tag>
+
+----------------------------------------------------------------------------------------
+
+Project-1: Frontend app deployment using nginx
+#1 index.html
+
+#2 Write a Dockerfile to build project image - Done
+
+#3 Building the project image
+docker build -t <project-name>:<tag> <path of dockerfile>
+
+<image-name>:latest
+<image-name>:v1.0.0
