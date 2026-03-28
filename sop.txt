@@ -1,3 +1,5 @@
+## SOP File
+
 #1 Downloading/pulling of public images from docker hub - Eg. nginx, node, python, mysql
 docker pull <image-name>:<image-tag>
 # nginx images - it is a webserver which is used to host static web apps - frontend apps, or reverse proxy.
